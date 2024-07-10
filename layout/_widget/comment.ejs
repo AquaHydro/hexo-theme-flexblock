@@ -59,6 +59,7 @@
   <% } %>
 
   <% if (useComments==='waline' && waline.serverURL) { %>
+    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
     <div class="waline-container comments-container content-padding--primary soft-size--large soft-style--box">
       <div id="waline"></div>
     </div>
@@ -68,6 +69,7 @@
       init({
         el: '#waline',
         serverURL: '<%= waline.serverURL %>',
+        dark: 'html.theme-dark',
       });
     </script>
   <% } %>
