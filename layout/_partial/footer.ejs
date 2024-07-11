@@ -5,7 +5,7 @@
     <div class="social-icons">
       <% for (var i in theme.social_icon.icons) { %>
         <% if (theme.social_icon.icons[i]) { %>
-          <a href="<%= theme.social_icon.icons[i] %>" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+          <a href="<%= theme.social_icon.icons[i] %>" aria-label="social_icon" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
             <%- partial("../_svg/social-"+ i +".svg") %>
           </a>
         <% } %>
