@@ -20,6 +20,11 @@
         <%- page.content %>
       </section>
 
+      <%# 分享链接 %>
+      <section class="page-message-container layout-padding">
+        <%- partial('../_widget/social-share', { post: page }) %>
+      </section>
+
       <%# 输出上一篇，下一篇内容 %>
       <% if (page.prev || page.next){ %>
         <nav class="article-nav">
