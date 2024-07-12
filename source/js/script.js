@@ -69,9 +69,21 @@ window.addEventListener("DOMContentLoaded", function() {
 
   // theme auto click
   document.querySelector('#theme-auto').addEventListener('click', function() {
-    html.classList.remove('theme-light')
-    html.classList.remove('theme-dark')
-    window.localStorage.setItem('theme', '')
+    html.classList.remove("theme-light");
+    html.classList.remove("theme-dark");
+
+    const prefersDarkScheme = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    if (prefersDarkScheme) {
+      html.classList.add("theme-dark");
+      window.localStorage.setItem("theme", "theme-dark");
+    } else {
+      html.classList.add("theme-light");
+      window.localStorage.setItem('theme', 'theme-light')
+    }
+
   })
 
   // mobile nav click

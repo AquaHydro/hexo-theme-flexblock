@@ -68,6 +68,15 @@
         link.rel = 'stylesheet';
         link.href = 'https://unpkg.com/@waline/client@v3/dist/waline.css';
         document.head.appendChild(link);
+
+      const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      // 设置主题类
+      const htmlElement = document.documentElement;
+      if (prefersDarkScheme) {
+        htmlElement.classList.add('theme-dark');
+      } else {
+        htmlElement.classList.add('theme-light');
+      }
       init({
         el: '#waline',
         serverURL: '<%= waline.serverURL %>',
