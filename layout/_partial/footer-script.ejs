@@ -103,4 +103,24 @@
   <!-- Tencent Analytics End -->
 <% } %>
 
+
+<% if (theme.speculation_rules) { %>
+  <script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            { "not": { "href_matches": "/tags/*" } },
+            { "not": { "href_matches": "/categories/*" } }
+          ]
+        },
+        "eagerness": "immediate"
+      }
+    ]
+  }
+  </script>
+<% } %>
+
 <%- js('js/script') %>

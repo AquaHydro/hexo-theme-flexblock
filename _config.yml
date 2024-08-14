@@ -82,6 +82,9 @@ jsdelivr_mirror:
 # 国内备案信息
 beian: 
 
+# 预加载 Speculation Rules API
+speculation_rules: true
+
 # 谷歌分析
 google_analytics: 
 # gauges分析
