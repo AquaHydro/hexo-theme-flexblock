@@ -46,6 +46,7 @@
           const url = window.location.href;
           // 请求gemini接口生成摘要
           fetch(`https://gemini.ilikestudy.cn/summarize/?url=${url}`)
+            .then(response => response.text())
             .then(data => {
               const geminiDetail = document.querySelector('.gemini-detail');
               geminiDetail.innerHTML = data;
