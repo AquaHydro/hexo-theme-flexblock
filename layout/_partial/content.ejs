@@ -42,15 +42,50 @@
           </ul>
         </div>
         <script>
+          const geminiDetail = document.querySelector('.gemini-detail');
           // 获取当前url
           const url = window.location.href;
           // 请求gemini接口生成摘要
-          fetch(`https://gemini.ilikestudy.cn/summarize/?url=${url}`)
-            .then(response => response.text())
-            .then(data => {
-              const geminiDetail = document.querySelector('.gemini-detail');
-              geminiDetail.innerHTML = data;
-            });
+          // fetch(`https://gemini.ilikestudy.cn/summarize/?url=${url}`)
+          //   .then(response => response.text())
+          //   .then(data => {
+          //     const geminiDetail = document.querySelector('.gemini-detail');
+          //     geminiDetail.innerHTML = data;
+          //   });
+
+          // 流式加载
+          try {
+            (async () => {
+              const response = await fetch(`https://gemini.ilikestudy.cn/summarize/stream/?url=${url}`, {
+                // Consider using 'cors' mode if your server supports CORS
+                mode: 'cors',
+              });
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+
+              geminiDetail.innerHTML = '';
+
+              const body = response.body;
+              if (body === null) {
+                console.error("Response body is null. Server might not be sending data.");
+                return; // Or handle the situation differently
+              }
+
+              const reader = body.getReader();
+              const decoder = new TextDecoder();
+
+              while (true) {
+                const { value, done } = await reader.read();
+                if (done) break;
+                const geminiDetail = document.querySelector('.gemini-detail');
+                geminiDetail.innerHTML += decoder.decode(value);
+              }
+            })();
+          } catch (error) {
+            console.error("Error fetching summary:", error);
+            geminiDetail.innerHTML = 'Error fetching summary';
+          }
         </script>
       </section>
       
