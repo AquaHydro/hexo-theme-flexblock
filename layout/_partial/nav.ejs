@@ -13,12 +13,12 @@
     </div>
     <!-- link -->
     <div class="navbar-link">
-      <div class="navbar-btn">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <ul class="navbar-list">
+      <button type="button" class="navbar-btn" aria-label="切换导航菜单" aria-expanded="false" aria-controls="navbar-list">
+        <div aria-hidden="true"></div>
+        <div aria-hidden="true"></div>
+        <div aria-hidden="true"></div>
+      </button>
+      <ul class="navbar-list" id="navbar-list">
         <% for (var i in theme.menu) { %>
           <li class="navbar-list-item"><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
         <% } %>

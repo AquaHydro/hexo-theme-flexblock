@@ -5,7 +5,7 @@
       <div class="article-item layout-padding">
         <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
           <% if (post.cover) { %>
-            <div class="card-cover" background-image-lazy data-img="<%= post.cover %>"></div>
+            <div class="card-cover" background-image-lazy data-img="<%= post.cover %>" role="img" aria-label="<%= post.title %>封面图"></div>
           <% } %>
 
           <div class="card-text">

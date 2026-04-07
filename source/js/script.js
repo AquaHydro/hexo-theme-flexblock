@@ -90,6 +90,8 @@ window.addEventListener("DOMContentLoaded", function() {
   navBtn.addEventListener("click", function () {
     html.classList.toggle("show-mobile-nav");
     this.classList.toggle("active");
+    const expanded = this.getAttribute("aria-expanded") === "true";
+    this.setAttribute("aria-expanded", String(!expanded));
   });
 
   // mobile nav link click

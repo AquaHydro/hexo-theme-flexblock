@@ -2,7 +2,7 @@
 <!-- header container -->
 <header class="header-container<%= is_post() ? ' post' : '' %>">
   <% if (page.cover || theme.banner) { %>
-    <div class="post-image" style="<%= `background-image: url(${page.cover || theme.banner})` %>"></div>
+    <div class="post-image" style="<%= `background-image: url(${page.cover || theme.banner})` %>" role="img" aria-label="<%= page.title ? page.title + '题图' : config.title + ' banner' %>"></div>
   <% } %>
 
   <%- partial('_partial/nav', null, {cache: !config.relative_link}) %>

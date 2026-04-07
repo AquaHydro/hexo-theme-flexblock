@@ -229,3 +229,38 @@ i, em, dfn {
 @import "_partial/pagination"
 @import "_partial/content"
 @import "_partial/page"
+
+// skip link
+.skip-link
+  position: absolute
+  top: -100%
+  left: 0
+  z-index: 9999
+  padding: 8px 16px
+  background: var(--theme-stree-color, #3367D6)
+  color: #fff
+  font-size: 14px
+  border-radius: 0 0 4px 0
+  text-decoration: none
+  &:focus
+    top: 0
+
+// button semantic reset (navbar-btn, theme toggles, back-to-top)
+button.navbar-btn,
+button.back-to-top-fixed
+  border: 0
+  background: transparent
+  padding: 0
+  outline: inherit
+
+.footer-container button
+  border: 0
+  background: transparent
+  cursor: pointer
+  color: var(--theme-stree-color)
+  font-weight: bolder
+  font-size: inherit
+  padding: 0 4px
+  transition: color 0.3s ease
+  &:hover
+    color: var(--theme-text-active)
